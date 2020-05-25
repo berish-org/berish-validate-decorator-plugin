@@ -1,6 +1,6 @@
 {
   "name": "@berish/validate-decorator-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Validation of complex objects with support for validation maps, rules and decorators",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
@@ -51,7 +51,9 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
-    "@berish/linq": "^1.0.5",
-    "@berish/validate": "^0.0.1"
+    "@berish/linq": "^1.0.5"
+  },
+  "peerDependencies": {
+    "@berish/validate": "*"
   }
 }
