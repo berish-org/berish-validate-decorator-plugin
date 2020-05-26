@@ -201,10 +201,10 @@
   resolved "https://registry.yarnpkg.com/@berish/pathof/-/pathof-1.1.0.tgz#6953d0a33ababacdd52a7acb5b8e4a3a20686bed"
   integrity sha512-0M36hB64AU3fR6soaT6oNHYBRHE99fwuaN0EREXKSp1bDcaYWpHiolCWy0bIZlnYrwH3rX62DrxMr8DpfZ1jww==
 
-"@berish/validate@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@berish/validate/-/validate-0.0.1.tgz#3b208d30acb28be3964a31c3cdc2296d0d1f687b"
-  integrity sha512-Flg5qGsVav8bVWYDOE8+FxmKt3V8HGtk2jQbYtsihPpSxIf+j2phwKbwTUfcK6StpkUmcvSaci0kHHiPhf2+Bg==
+"@berish/validate@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@berish/validate/-/validate-0.0.4.tgz#b798b3f37e5137a42d6f12c64a8960b712c32a40"
+  integrity sha512-wmGzYGfvOjJrMhOQGkKQ61dGPQV4M2JEaZ56SKCOI5VChi1ZW69zjUa8lB6qcOI5WUbR0LUmGW6mmwxo46l3Eg==
   dependencies:
     "@berish/linq" "^1.0.5"
     "@berish/pathof" "^1.1.0"
@@ -430,13 +430,6 @@
   version "14.0.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.5.tgz#3d03acd3b3414cf67faf999aed11682ed121f22b"
   integrity sha512-90hiq6/VqtQgX8Sp0EzeIsv3r+ellbGj4URKj5j30tLlZvRUpnAe9YbYnjl3pJM93GyXU0tghHhvXHq+5rnCKA==
-
-"@types/reflect-metadata@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@types/reflect-metadata/-/reflect-metadata-0.1.0.tgz#592805bdf6d63dd7229773218afeba37ac2eab16"
-  integrity sha512-bXltFLY3qhzCnVYP5iUpeSICagQ8rc9K2liS+8M0lBcz54BHs3O6W5UvqespVSuebo1BXLi+/y9ioELAW9SC2A==
-  dependencies:
-    reflect-metadata "*"
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -2680,11 +2673,6 @@ realpath-native@^1.1.0:
   integrity sha512-wlgPA6cCIIg9gKz0fgAPjnzh4yR/LnXovwuo9hvyGvx3h8nX4+/iLZplfUWasXpqD8BdnGnP5njOFjkUwPzvjA==
   dependencies:
     util.promisify "^1.0.0"
-
-reflect-metadata@*, reflect-metadata@^0.1.13:
-  version "0.1.13"
-  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
-  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
 
 regex-not@^1.0.0, regex-not@^1.0.2:
   version "1.0.2"

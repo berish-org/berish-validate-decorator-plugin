@@ -5,7 +5,7 @@ import { getRulesByKey } from './getRules';
 import { getFormKeys } from './getFormKeys';
 import { getFormClass } from './getFormClass';
 
-export function validateMapClass<T>(cls: IClass): ValidateMap<T> {
+export function getValidateMapFromClass<T>(cls: IClass): ValidateMap<T> {
   if (!cls) return null;
 
   const formKeys = getFormKeys(cls);
@@ -22,7 +22,7 @@ export function validateMapClass<T>(cls: IClass): ValidateMap<T> {
       ? keys.reduce<ValidateMap<T>>((out, key) => {
           const isForm = formKeys.indexOf(key) !== -1;
           const formClass = isForm && getFormClass(cls, key);
-          const formValidateMap = isForm && validateMapClass(formClass);
+          const formValidateMap = isForm && getValidateMapFromClass(formClass);
 
           const rules = getRulesByKey(cls, key);
           if (formValidateMap) {

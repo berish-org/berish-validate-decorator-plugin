@@ -1,10 +1,10 @@
-import { createSimpleRule, usePlugin } from '@berish/validate';
-import { ruleForm, plugin, validateMapClass } from '../';
+import { createRule, usePlugin } from '@berish/validate';
+import { ruleForm, plugin, getValidateMapFromClass } from '../';
 
 usePlugin(plugin);
 
 describe('check decorator plugin', () => {
-  const isRequired = createSimpleRule({
+  const isRequired = createRule({
     name: 'isRequired',
     conditionSync: ({ value }) => {
       if (value || value === 0) return true;
@@ -24,7 +24,7 @@ describe('check decorator plugin', () => {
       public a: A;
     }
 
-    const map = validateMapClass(C);
+    const map = getValidateMapFromClass(C);
     console.log(map);
   });
 });

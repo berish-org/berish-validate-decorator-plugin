@@ -1,10 +1,10 @@
 import { IClass } from './types';
-import { validateMapClass } from './validateMapClass';
+import { getValidateMapFromClass } from './getValidateMapFromClass';
 import { ValidateMap } from '@berish/validate';
 
-export function validateMapInstance<T>(instance: T) {
+export function getValidateMapFromInstance<T>(instance: T): ValidateMap<T> {
   if (!instance || typeof instance !== 'object') return null;
   const cls: IClass = instance.constructor as IClass;
 
-  return validateMapClass(cls) as ValidateMap<T>;
+  return getValidateMapFromClass(cls);
 }

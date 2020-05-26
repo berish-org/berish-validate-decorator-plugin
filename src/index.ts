@@ -14,5 +14,5 @@ export * from './ruleDecorator';
 export * from './ruleForm';
 export * from './types';
 export * from './validateInstance';
-export * from './validateMapClass';
-export * from './validateMapInstance';
+export * from './getValidateMapFromClass';
+export * from './getValidateMapFromInstance';
