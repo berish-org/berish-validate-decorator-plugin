@@ -201,10 +201,10 @@
   resolved "https://registry.yarnpkg.com/@berish/pathof/-/pathof-1.1.0.tgz#6953d0a33ababacdd52a7acb5b8e4a3a20686bed"
   integrity sha512-0M36hB64AU3fR6soaT6oNHYBRHE99fwuaN0EREXKSp1bDcaYWpHiolCWy0bIZlnYrwH3rX62DrxMr8DpfZ1jww==
 
-"@berish/validate@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@berish/validate/-/validate-0.0.4.tgz#b798b3f37e5137a42d6f12c64a8960b712c32a40"
-  integrity sha512-wmGzYGfvOjJrMhOQGkKQ61dGPQV4M2JEaZ56SKCOI5VChi1ZW69zjUa8lB6qcOI5WUbR0LUmGW6mmwxo46l3Eg==
+"@berish/validate@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@berish/validate/-/validate-0.0.5.tgz#74951cc4f30fd3d35edee40d35dcae4f493057e6"
+  integrity sha512-CgMYZg3WDAJyvns/JPFPxf1f+fu3YAZJqR60mTqcQxapg6nXSBamiWVrp7Lq7bEeWDBh018CpOj0IPom4S8c5g==
   dependencies:
     "@berish/linq" "^1.0.5"
     "@berish/pathof" "^1.1.0"
