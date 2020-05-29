@@ -1,5 +1,4 @@
-import { SYMBOL_CONSTRUCTOR_VALIDATORS } from './types';
-import { IClass } from './types';
+import { IClass, SYMBOL_CONSTRUCTOR_VALIDATORS } from '../types';
 
 export function getRulesByKey(constructor: IClass, key: any) {
   if (!constructor) return [];

@@ -1,5 +1,5 @@
 import LINQ from '@berish/linq';
-import { IClass, SYMBOL_CONSTRUCTOR_VALIDATORS, SYMBOL_CONSTRUCTOR_ROOT } from './types';
+import { IClass, SYMBOL_CONSTRUCTOR_VALIDATORS, SYMBOL_CONSTRUCTOR_ROOT } from '../types';
 
 export function getKeys(cls: IClass) {
   if (!cls) return [];
