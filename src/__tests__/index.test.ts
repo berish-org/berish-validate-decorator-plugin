@@ -1,5 +1,6 @@
 import { createRule, usePlugin, createRuleFlag, createSimpleRule } from '@berish/validate';
-import { ruleForm, plugin, getFormKeys, ruleDecorator } from '../';
+import { ruleForm, getFormKeys, ruleDecorator } from '../decorate';
+import { plugin } from '../';
 import { getFormClass, SYMBOL_CONSTRUCTOR_FORM_KEY_EMPTY, getKeys, getRulesByKey } from '../decorate';
 import { getValidateMapFromClass, getValidateMapFromInstance } from '../validateMap';
 import { validateInstanceSync } from '../validateInstance';
@@ -263,6 +264,7 @@ describe('check decorator plugin', () => {
     user.auth = auth;
 
     const result = validateInstanceSync(user, true);
+
     expect(result).toEqual([
       {
         key: ['info', 'age'],

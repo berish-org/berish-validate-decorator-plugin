@@ -189,24 +189,22 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@berish/linq@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@berish/linq/-/linq-1.0.5.tgz#435a2cf97080fe5c166bc51269bf22642f29d8a7"
-  integrity sha512-uvzva+8kisGy9ZK0vCnE4v/OqNvVgbL2czrU0qb7X94itZQH747ygNaJh915bMobIc1bZUSW/kZ2BMCOiFI6cg==
-  dependencies:
-    berish-collection "^2.0.1"
+"@berish/linq@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@berish/linq/-/linq-1.1.0.tgz#da62d357b65bbd0f3c0bd2aa930d21b6bb05568a"
+  integrity sha512-KKwyulTigMpPudw/wptGx9oJvaH9yYB7ulxm6GMytAJUqvcYufrBcOF5jpe1Gqw4o1EYLKcN2/1NR+jxhtBOmQ==
 
 "@berish/pathof@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@berish/pathof/-/pathof-1.1.0.tgz#6953d0a33ababacdd52a7acb5b8e4a3a20686bed"
   integrity sha512-0M36hB64AU3fR6soaT6oNHYBRHE99fwuaN0EREXKSp1bDcaYWpHiolCWy0bIZlnYrwH3rX62DrxMr8DpfZ1jww==
 
-"@berish/validate@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@berish/validate/-/validate-0.0.5.tgz#74951cc4f30fd3d35edee40d35dcae4f493057e6"
-  integrity sha512-CgMYZg3WDAJyvns/JPFPxf1f+fu3YAZJqR60mTqcQxapg6nXSBamiWVrp7Lq7bEeWDBh018CpOj0IPom4S8c5g==
+"@berish/validate@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@berish/validate/-/validate-0.0.7.tgz#14cef29d4ee86f97a98f7fa928abd9123af77a6a"
+  integrity sha512-VrE54aaOhAJui8mb1Cep09dV48FRak4glNach2B+KWmxZQFt+OMFkh7iG3ezgqCJOQKOR0bfRz4sW/oW2C+0Ew==
   dependencies:
-    "@berish/linq" "^1.0.5"
+    "@berish/linq" "^1.1.0"
     "@berish/pathof" "^1.1.0"
     berish-guid "^2.0.0"
 
