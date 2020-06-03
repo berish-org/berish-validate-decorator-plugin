@@ -1,6 +1,6 @@
 import { IRulePluginDefault } from '@berish/validate';
 import { validateInstanceSync, validateInstanceAsync } from './validateInstance';
-import { getValidateMapFromClass, getValidateMapFromInstance } from './validateMap';
+import { getValidateMapFromClass, getValidateMapFromInstance, getValidateMapFromPathOf } from './validateMap';
 import { ruleForm, ruleDecorator } from './decorate';
 
 const plugin: IRulePluginDefault<{}> = params => {
@@ -15,6 +15,7 @@ const plugin: IRulePluginDefault<{}> = params => {
         validateInstanceAsync,
         getValidateMapFromClass,
         getValidateMapFromInstance,
+        getValidateMapFromPathOf,
         ruleForm,
       };
     },

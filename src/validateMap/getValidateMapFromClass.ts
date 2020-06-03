@@ -2,15 +2,20 @@ import LINQ from '@berish/linq';
 import { ValidateMap, RuleMapType, RuleTupleType, RuleReferenceType } from '@berish/validate';
 import { getKeys, getRulesByKey, getFormClass, getFormKeys, SYMBOL_CONSTRUCTOR_FORM_KEY_EMPTY } from '../decorate';
 import { IClass, SYMBOL_CONSTRUCTOR_ROOT } from '../types';
+import { containKey } from './containKey';
 
 export function getValidateMapFromClass<T>(
   cls: IClass<T>,
   resolveEmptyFormClass?: (keys: (string | number | symbol)[]) => IClass,
+  onlyKeys?: (string | symbol | number)[][],
 ): ValidateMap<T> {
   const cacheFormClassToKeys: [IClass, (string | number | symbol)[]][] = [];
+  const _excludeKey = (keys: (symbol | number | string)[]) => onlyKeys && !containKey(keys, onlyKeys);
   const _getValidateMapFromClass = <T>(cls: IClass<T>, currentKeys: (string | number | symbol)[]): ValidateMap<any> => {
     // Если класс пустой, то возвращаем null карту
     if (!cls) return null;
+
+    if (_excludeKey(currentKeys)) return null;
 
     cacheFormClassToKeys.push([cls, currentKeys]);
 
@@ -32,6 +37,7 @@ export function getValidateMapFromClass<T>(
     const map = allKeys.reduce<RuleMapType<{ [key: string]: any }>>((out, key) => {
       const isForm = formKeys.indexOf(key) !== -1;
       const rules = getRulesByKey(cls, key);
+      if (_excludeKey([...currentKeys, key])) return out;
 
       if (isForm) {
         const formClassOrEmpty = getFormClass(cls, key);
@@ -58,6 +64,7 @@ export function getValidateMapFromClass<T>(
           };
         }
       }
+
       return rules.length > 0 ? { ...out, [key]: rules } : out;
     }, {});
     return rootRules.length > 0 ? [rootRules, map] : map;

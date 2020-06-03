@@ -1,9 +1,11 @@
-import { createRule, usePlugin, createRuleFlag, createSimpleRule } from '@berish/validate';
+import { createRule, usePlugin, createRuleFlag, createSimpleRule, validateMapSync } from '@berish/validate';
 import { ruleForm, getFormKeys, ruleDecorator } from '../decorate';
 import { plugin } from '../';
 import { getFormClass, SYMBOL_CONSTRUCTOR_FORM_KEY_EMPTY, getKeys, getRulesByKey } from '../decorate';
-import { getValidateMapFromClass, getValidateMapFromInstance } from '../validateMap';
+import { getValidateMapFromClass, getValidateMapFromInstance, getValidateMapFromPathOf } from '../validateMap';
 import { validateInstanceSync } from '../validateInstance';
+import { of } from '@berish/pathof';
+import { containKey } from '../validateMap/containKey';
 
 usePlugin(plugin);
 
@@ -23,7 +25,7 @@ export const isEmail = createRule({
 const isRequired = createRule({
   name: 'isRequired',
   conditionSync: ({ value }) => (value ? true : value === 0 ? true : false),
-  errorText: () => ' Поле обязательно',
+  errorText: () => 'Поле обязательно',
 });
 
 export const range = createSimpleRule<[number, number]>({
@@ -220,7 +222,7 @@ describe('check decorator plugin', () => {
     });
   });
 
-  test('', () => {
+  test('validateInstanceSync', () => {
     @(isEmail.revertSimple('notEmail').decorator)
     class UserInfo {
       public name: string;
@@ -271,5 +273,62 @@ describe('check decorator plugin', () => {
         rules: [{ name: range.ruleName, isValid: false, errorText: `Значение должно быть больше 18` }],
       },
     ]);
+  });
+
+  test('validateInstanceSync primitive', () => {
+    class Book {
+      @isRequired.decorator
+      id: string;
+
+      @isRequired.decorator
+      name: string;
+    }
+    class Author {
+      @isRequired.decorator
+      name: string;
+
+      @isRequired.decorator
+      author: string;
+
+      @ruleForm(Book)
+      book: Book;
+    }
+
+    const a = new Author();
+    a.author = 'Ravil';
+    a.book = new Book();
+    a.book.id = '123';
+    a.book.name = 'War or Peace';
+    const result1 = validateInstanceSync(a, true);
+    expect(result1).toEqual([
+      { key: ['name'], rules: [{ name: isRequired.ruleName, isValid: false, errorText: 'Поле обязательно' }] },
+    ]);
+
+    // console.log(getValidateMapFromPathOf(of(a)('name')));
+    expect(getValidateMapFromPathOf(of(a))).toEqual({
+      instance: a,
+      map: {
+        name: [isRequired],
+        author: [isRequired],
+        book: { id: [isRequired], name: [isRequired] },
+      },
+    });
+    expect(getValidateMapFromPathOf(of(a)('name'))).toEqual({ instance: a, map: { name: [isRequired] } });
+    expect(getValidateMapFromPathOf(of(a)('book'))).toEqual({
+      instance: a.book,
+      map: { id: [isRequired], name: [isRequired] },
+    });
+    expect(getValidateMapFromPathOf(of(a)('book')('name'))).toEqual({ instance: a.book, map: { name: [isRequired] } });
+  });
+
+  test('containKey', () => {
+    expect(containKey([], [])).toBe(true);
+    expect(containKey([], [['book']])).toBe(true);
+    expect(containKey(['id'], [['name']])).toBe(false);
+    expect(containKey(['id'], [['name'], ['author'], ['book', 'id']])).toBe(false);
+    expect(containKey(['author'], [['name'], ['author'], ['book', 'id']])).toBe(true);
+    expect(containKey(['book'], [['name'], ['author'], ['book', 'id']])).toBe(true);
+    expect(containKey(['book', 'id'], [['name'], ['author'], ['book', 'id']])).toBe(true);
+    expect(containKey(['book', 'name'], [['name'], ['author'], ['book', 'id']])).toBe(false);
   });
 });
